@@ -3,5 +3,5 @@ suites:
         src_path: src
         spec_prefix: spec
         namespace: MindOfMicah\PHPTWBS
-formatter.name: pretter
+formatter.name: pretty
 
