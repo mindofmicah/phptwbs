@@ -18,6 +18,32 @@ class Alert
         return $alert;
     }
 
+    public static function info($message)
+    {
+        $alert = new self;
+        $alert->setStyle('info');
+        $alert->setMessage($message);
+        return $alert;
+    }
+    public static function warning($message)
+    {
+        $alert = new self;
+        $alert->setStyle('warning');
+        $alert->setMessage($message);
+        return $alert;
+    }
+
+    public static function danger($message)
+    {
+        $alert = new self;
+        $alert->setStyle('danger');
+        $alert->setMessage($message);
+        return $alert;
+    }
+
+
+
+
     public function withHeading($heading)
     {
         $this->heading = new Tag('h4', $heading);

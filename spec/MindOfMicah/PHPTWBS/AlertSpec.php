@@ -20,6 +20,13 @@ class AlertSpec extends ObjectBehavior
         $this->flatten()->shouldBe('<div class="alert alert-success" role="alert"><p>I like turtles</p></div>');
     }
 
+    public function it_can_create_all_the_different_alerts()
+    {
+        foreach(['info', 'success', 'danger', 'warning'] as $alert_type) {
+            $this::$alert_type('msg')->flatten()->shouldBe('<div class="alert alert-'.$alert_type . '" role="alert">msg</div>');
+        }
+    }
+
     public function it_should_treat_flatten_as_the_to_string_method()
     {
         $alert = new \MindOfMicah\PHPTWBS\Alert();
