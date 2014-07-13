@@ -1,5 +1,4 @@
 <?php
-
 namespace MindOfMicah\PHPTWBS;
 
 class Alert
@@ -10,38 +9,16 @@ class Alert
     private $message;
     private $style;
 
-    public static function success($message)
+    public static function __callStatic($func_name, array $arguments = array())
     {
-        $alert = new self;
-        $alert->setStyle('success');
-        $alert->setMessage($message);
-        return $alert;
+        if (in_array($func_name, ['danger', 'info', 'warning', 'success'])) {
+            $alert = new self;
+            $alert->setStyle($func_name);
+            $alert->setMessage($arguments[0]);
+            return $alert;
+        } 
+        trigger_error($func_name . ' does not exist');
     }
-
-    public static function info($message)
-    {
-        $alert = new self;
-        $alert->setStyle('info');
-        $alert->setMessage($message);
-        return $alert;
-    }
-    public static function warning($message)
-    {
-        $alert = new self;
-        $alert->setStyle('warning');
-        $alert->setMessage($message);
-        return $alert;
-    }
-
-    public static function danger($message)
-    {
-        $alert = new self;
-        $alert->setStyle('danger');
-        $alert->setMessage($message);
-        return $alert;
-    }
-
-
 
 
     public function withHeading($heading)
