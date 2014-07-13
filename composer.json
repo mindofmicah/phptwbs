@@ -19,6 +19,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-
+        "behat/behat": "3.*",
+        "phpunit/phpunit": "4.*"
     }
 }
