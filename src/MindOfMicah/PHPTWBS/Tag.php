@@ -5,6 +5,8 @@ namespace MindOfMicah\PHPTWBS;
 
 class Tag
 {
+    use FlattenAsToString;
+
     private $tag;
     private $contents;
     private $options;
@@ -14,11 +16,6 @@ class Tag
         $this->tag = $tag;
         $this->contents = $contents;
         $this->options = $options;
-    }
-
-    public function __toString()
-    {
-        return $this->flatten();
     }
 
     public function flatten()

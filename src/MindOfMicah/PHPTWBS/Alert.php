@@ -4,6 +4,8 @@ namespace MindOfMicah\PHPTWBS;
 
 class Alert
 {
+    use FlattenAsToString;
+
     private $heading = false;
     private $message;
     private $style;
@@ -18,18 +20,18 @@ class Alert
 
     public function withHeading($heading)
     {
-        $this->heading = $heading;
+        $this->heading = new Tag('h4', $heading);
         return $this;
-    }
-
-    public function __toString()
-    {
-        return $this->flatten();
     }
 
     public function flatten()
     {
-        return '<div class="alert alert-' . $this->style . '" role="alert">' . ($this->heading ? '<h4>' . $this->heading . '</h4>' : '') . $this->message . '</div>';
+        $tag = new Tag(
+            'div',
+            ($this->heading ?: '') . $this->message,
+            ['class'=>'alert alert-' . $this->style, 'role'=>'alert']
+        );
+        return (string)$tag;
     }
 
     public function setMessage($message)
