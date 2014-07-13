@@ -22,4 +22,9 @@ class TagSpec extends ObjectBehavior
         $this->beConstructedWith('p','I like turtles');
         $this->flatten()->shouldBe('<p>I like turtles</p>');
     }
+    public function it_should_add_attributes_from_the_constructor()
+    {
+        $this->beConstructedWith('div', 'hi', ['class'=>'tacos', 'role'=>'nav', 'id'=>'my-id']);
+        $this->flatten()->shouldBe('<div class="tacos" role="nav" id="my-id">hi</div>');
+    }
 }
