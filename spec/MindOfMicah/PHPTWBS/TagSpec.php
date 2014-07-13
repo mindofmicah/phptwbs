@@ -27,4 +27,10 @@ class TagSpec extends ObjectBehavior
         $this->beConstructedWith('div', 'hi', ['class'=>'tacos', 'role'=>'nav', 'id'=>'my-id']);
         $this->flatten()->shouldBe('<div class="tacos" role="nav" id="my-id">hi</div>');
     }
+
+    public function it_should_create_a_tag_from_a_basic_selector()
+    {
+        $this->beConstructedWith('p#apples.active.class2');
+        $this->flatten()->shouldBe('<p id="apples" class="active class2"></p>');;
+    }
 }
